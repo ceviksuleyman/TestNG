@@ -1,11 +1,14 @@
 package utilities;
 
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -17,6 +20,12 @@ public abstract class TBBeforeClassAfterClass {
     protected Actions actions;
     protected String tarih1;
     protected String tarih2;
+
+    protected Faker faker;
+
+    protected Select select;
+
+    protected SoftAssert softAssert;
 
     protected DateTimeFormatter formater1, formatter2;
 
@@ -31,6 +40,8 @@ public abstract class TBBeforeClassAfterClass {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         actions = new Actions(driver);
+        faker = new Faker();
+        softAssert = new SoftAssert();
 
         LocalDateTime date = LocalDateTime.now();
         formater1 = DateTimeFormatter.ofPattern("ddMMyyyyHHmm");

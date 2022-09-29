@@ -1,4 +1,4 @@
-package tests.day16_testNG;
+package tests.day16_notation;
 
 import org.testng.annotations.Test;
 import utilities.TBBeforeMethodAfterMethod;

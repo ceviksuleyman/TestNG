@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -17,6 +18,8 @@ public abstract class TBBeforeMethodAfterMethod {
     protected Actions actions;
     protected String tarih1;
     protected String tarih2;
+
+    protected SoftAssert softAssert;
 
     protected DateTimeFormatter formater1, formatter2;
 
@@ -30,6 +33,7 @@ public abstract class TBBeforeMethodAfterMethod {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         actions = new Actions(driver);
+        softAssert = new SoftAssert();
 
         LocalDateTime date = LocalDateTime.now();
         formater1 = DateTimeFormatter.ofPattern("ddMMyyyyHHmm");
