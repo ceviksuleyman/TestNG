@@ -1,4 +1,4 @@
-package tests.aPractice.Practice05;
+package tests.aPractice.practice05;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;

@@ -1,4 +1,4 @@
-package tests.aPractice.Practice05;
+package tests.aPractice.practice05;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -71,7 +71,7 @@ public class P01 extends TBBeforeClassAfterClass {
         //dosya yukle
         WebElement uploadFile = driver.findElement(By.cssSelector("#photo"));
         uploadFile.sendKeys(
-                "C:\\Users\\User\\IdeaProjects\\com.B81TestNG\\src\\test\\java\\tests\\aPractice\\dependsOnMethods.png");
+                "C:\\Users\\User\\IdeaProjects\\com.B81TestNG\\src\\test\\java\\tests\\aPractice\\Practice05\\dependsOnMethods.png");
 
 
         //click submit button
