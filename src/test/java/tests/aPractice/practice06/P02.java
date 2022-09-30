@@ -7,9 +7,7 @@ import org.testng.annotations.Test;
 import pages.SaucedemoPage;
 import utilities.Driver;
 
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class P02 {
     @Test
@@ -30,15 +28,18 @@ public class P02 {
         WebElement ddm = saucedemoPage.dropDown;
 
 
-
         WebElement prices = saucedemoPage.prices;
         List<WebElement> price = Driver.getDriver().findElements(By.cssSelector(".inventory_item_price"));
-        Set<Double> priceSet = new TreeSet<>();
+        Set<Double> priceSet = new TreeSet<>(); // set
+        List<Double> priceList = new ArrayList<>(); // list
         for (WebElement w : price) {
             //System.out.println(w.getText() + "\n");
+            priceList.add(Double.parseDouble(w.getText().replace("$", "")));
             priceSet.add(Double.parseDouble(w.getText().replace("$", "")));
         }
-        System.out.println(priceSet);
+        System.out.println("Set Unique price -> " + priceSet);
+        Collections.sort(priceList); // list'i natural sirala
+        System.out.println("List Unique Degil -> " + priceList);
 
 
         Driver.select(ddm).selectByVisibleText("Price (low to high)");

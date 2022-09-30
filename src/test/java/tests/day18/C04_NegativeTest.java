@@ -2,7 +2,7 @@ package tests.day18;
 
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
-import pages.HotelMyCampPages;
+import pages.HotelMyCampPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
@@ -18,13 +18,13 @@ public class C04_NegativeTest {
     @Test
     public void negativeTest() {
 
-        HotelMyCampPages hotelMyCampPages = new HotelMyCampPages();
+        HotelMyCampPage hotelMyCampPage = new HotelMyCampPage();
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
 
         Driver.getActions().
-                click(hotelMyCampPages.loginButton).perform();
-        Driver.getActions().click(hotelMyCampPages.username).
+                click(hotelMyCampPage.loginButton).perform();
+        Driver.getActions().click(hotelMyCampPage.username).
                 sendKeys(ConfigReader.getProperty("userWrongHotel")).
                 sendKeys(Keys.TAB).
                 sendKeys(ConfigReader.getProperty("passwordHotel")).
@@ -37,6 +37,6 @@ public class C04_NegativeTest {
         //hotelMyCampPages.password.sendKeys(ConfigReader.getProperty("passwordHotel"));
         //hotelMyCampPages.submit.click();
 
-        Driver.getSoftAssert().assertTrue(hotelMyCampPages.hataliGiris.isDisplayed());
+        Driver.getSoftAssert().assertTrue(hotelMyCampPage.hataliGiris.isDisplayed());
     }
 }

@@ -44,20 +44,24 @@ public class Driver {
             driver = null;
         }
     }//method son
+
     public static Faker getFaker() { // getFaker method
 
         return faker = new Faker();
-    }
+    }//
+
     public static Actions getActions() { //getActions method
 
         return actions = new Actions(getDriver());
-    }
+    }//
+
     public static SoftAssert getSoftAssert() { //getSoftAssert method
 
         return softAssert = new SoftAssert();
-    }
-    public static Select select(WebElement ddm){ //select method
+    }//
+
+    public static Select select(WebElement ddm) { //select method
 
         return select = new Select(ddm);
-    }
+    }//
 }

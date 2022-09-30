@@ -3,7 +3,7 @@ package tests.day18;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HotelMyCampPages;
+import pages.HotelMyCampPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
@@ -23,12 +23,12 @@ public class C03_PositiveTest {
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
 
 
-        HotelMyCampPages hotelMyCampPages = new HotelMyCampPages();
+        HotelMyCampPage hotelMyCampPage = new HotelMyCampPage();
 
-        hotelMyCampPages.loginButton.click();
+        hotelMyCampPage.loginButton.click();
 
         Driver.getActions()
-                .click(hotelMyCampPages.username)
+                .click(hotelMyCampPage.username)
                 .sendKeys(ConfigReader.getProperty("userHotel"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(ConfigReader.getProperty("passwordHotel"))
@@ -37,7 +37,7 @@ public class C03_PositiveTest {
                 .perform();
 
 
-        Assert.assertTrue(hotelMyCampPages.girisBasarili.isDisplayed());
+        Assert.assertTrue(hotelMyCampPage.girisBasarili.isDisplayed());
 
         //hotelMyCampPages.username.sendKeys(ConfigReader.getProperty("usernameHotel"));
         //hotelMyCampPages.password.sendKeys(ConfigReader.getProperty("passwordHotel"));
