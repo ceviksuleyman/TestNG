@@ -7,7 +7,7 @@ import pages.HotelMyCampPages;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class C03_ConfigReader {
+public class C03_PositiveTest {
 
      /*
      https://www.hotelmycamp.com adresine git
@@ -18,11 +18,9 @@ public class C03_ConfigReader {
      */
 
     @Test
-    public void test01() {
-
+    public void positiveTest() {
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
-
 
 
         HotelMyCampPages hotelMyCampPages = new HotelMyCampPages();

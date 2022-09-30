@@ -26,4 +26,7 @@ public class HotelMyCampPages {
 
     @FindBy(css = ".username.username-hide-on-mobile")
     public WebElement girisBasarili;
+
+    @FindBy(css = "#divMessageResult")
+    public WebElement hataliGiris;
 }

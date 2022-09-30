@@ -8,6 +8,7 @@ import utilities.Driver;
 public class SaucedemoPage {
 
     public SaucedemoPage() {
+
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
