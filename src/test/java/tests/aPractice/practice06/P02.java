@@ -30,6 +30,7 @@ public class P02 {
         WebElement ddm = saucedemoPage.dropDown;
 
 
+
         WebElement prices = saucedemoPage.prices;
         List<WebElement> price = Driver.getDriver().findElements(By.cssSelector(".inventory_item_price"));
         Set<Double> priceSet = new TreeSet<>();
@@ -41,7 +42,7 @@ public class P02 {
 
 
         Driver.select(ddm).selectByVisibleText("Price (low to high)");
-        Assert.assertTrue(saucedemoPage.dropDown.isDisplayed());
+        Assert.assertTrue(Driver.select(ddm).getFirstSelectedOption().isDisplayed());
 
 
         System.out.println(Driver.select(ddm).getFirstSelectedOption().getText()); //Price (low to high)

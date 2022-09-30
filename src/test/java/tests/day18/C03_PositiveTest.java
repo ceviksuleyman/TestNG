@@ -29,7 +29,7 @@ public class C03_PositiveTest {
 
         Driver.getActions()
                 .click(hotelMyCampPages.username)
-                .sendKeys(ConfigReader.getProperty("usernameHotel"))
+                .sendKeys(ConfigReader.getProperty("userHotel"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(ConfigReader.getProperty("passwordHotel"))
                 .sendKeys(Keys.TAB)
