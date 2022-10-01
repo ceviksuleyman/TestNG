@@ -1,6 +1,8 @@
 package utilities;
 
+import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -29,11 +31,13 @@ public class ReusableMethods {
         FileUtils.copyFile(source, finalDestination);
         return target;
     }
+
     public static void scrollDownToElement(WebElement element) {
         ReusableMethods.waitFor(3);
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         jse.executeScript("arguments[0].click();", element);
     }
+
     //   HARD WAIT WITH THREAD.SLEEP
     //   waitFor(5);  => waits for 5 second
     public static void waitFor(int sec) {
@@ -81,4 +85,18 @@ public class ReusableMethods {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click()", element);
     }
+
+    static Faker faker;
+
+    public static Faker getFaker() {
+
+        return faker = new Faker();
+    }
+
+    static WebDriverWait wait;
+    public static WebDriverWait driverWait(WebDriver driver, Duration duration) {
+
+       return wait = new WebDriverWait(driver,duration);
+    }
+
 }

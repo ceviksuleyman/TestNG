@@ -1,21 +1,18 @@
 package tests;
 
-import com.github.javafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.A101Page;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
-import utilities.TestBaseRapor;
+import utilities.*;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
@@ -67,7 +64,7 @@ public class A101Case extends TestBaseRapor {
         extentTest.info("Sepeti goruntule butonuna tiklanir");
 
 
-        //6Sepeti onayla butonuna tiklanir
+        //6-Sepeti onayla butonuna tiklanir
         a101Page.sepetiOnaylaButonu.click();
         extentTest.info("Sepeti onayla butonuna tiklanir");
 
@@ -85,41 +82,51 @@ public class A101Case extends TestBaseRapor {
         a101Page.mailTextBoxDevamEtButonu.click();
         extentTest.info("mail ekraninin gorunur oldugu test edilir ve bir mail adresi girilir");
 
+
         //9-Adres ekrani gelir, adres olustur dedikten sonra odeme ekrani gelir
         a101Page.adresOlusturButonu.click();
-        a101Page.adresOlusturAdresBasligiBox.sendKeys("Ev Adresi");
-        a101Page.adresOlusturIsimBox.sendKeys("isim");
-        a101Page.adresOlusturSoyadBox.sendKeys("soyad");
+        a101Page.adresOlusturAdresBasligiBox.sendKeys(ReusableMethods.getFaker().address().city());
+        a101Page.adresOlusturIsimBox.sendKeys(ReusableMethods.getFaker().name().firstName());
+        a101Page.adresOlusturSoyadBox.sendKeys(ReusableMethods.getFaker().name().lastName());
         ReusableMethods.waitFor(3);
-        a101Page.adresOlusturCepTelBox.sendKeys("5054443322");
+        a101Page.adresOlusturCepTelBox.sendKeys(ReusableMethods.getFaker().number().digits(11));
         extentTest.info("Adres ekrani gelir, adres olustur dedikten sonra odeme ekrani gelir");
+
+        //Sehir Sec
         Select select;
         select = new Select(a101Page.adresOlusturIlDropDown);
         List<WebElement> IlSayisi = select.getOptions(); //DropDown menudeki tum illeri liste attik
         Random random = new Random();
         int index = random.nextInt(IlSayisi.size());
-        while (index == 1) {
+        while (index == 0) {
             index = random.nextInt(IlSayisi.size());    // random olarak il atamasi yapmasini sagladik
         }
-
         select.selectByIndex(index);
+
+
+        // Ilce Sec
         select = new Select(a101Page.adresOlusturIlceDropDown); //DropDown menuden random olarak
         List<WebElement> ilceSayisi = select.getOptions();      //secilen ile bagli olarak ilceleri liste attik
         random = new Random();
         index = random.nextInt(ilceSayisi.size());
-        while (index == 1) {
+        while (index == 0) {
             index = random.nextInt(ilceSayisi.size());     // random olarak ilce atamasi yapmasini sagladik
         }
-
         select.selectByIndex(index);
+
+
+        // Mahalle Sec
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(a101Page.adresOlusturMahalleDropDown));
+        //ReusableMethods.driverWait(Driver.getDriver(),Duration.ofSeconds(15)).
+        //        until(ExpectedConditions.elementToBeClickable(a101Page.adresOlusturMahalleDropDown));
         select = new Select(a101Page.adresOlusturMahalleDropDown); //DropDown menuden random olarak
         List<WebElement> mahalleSayisi = select.getOptions();    //secilen ilceye bagli olarak mahalleleri liste attik
         random = new Random();
         index = random.nextInt(mahalleSayisi.size());
-        while (index == 1) {
+        while (index == 0) {
             index = random.nextInt(mahalleSayisi.size());
         }
-
         //Mahalle Drop Down'ında StaleElementReferenceException verdigi icin bu sekilde Handle edildi
         for (int retry = 0; retry < 5; retry++) {
             try {
@@ -130,25 +137,28 @@ public class A101Case extends TestBaseRapor {
             }
         }
 
-        Faker faker = new Faker();
 
-
-        //*******************************************************************************************************
-
+        //full adress
         Actions actions = new Actions(Driver.getDriver());
         actions.click(a101Page.adresOlusturAdresBox).
-                sendKeys(faker.address().fullAddress())
-                //.sendKeys(Keys.TAB)
-                //.sendKeys(Keys.ENTER)
+                sendKeys(ReusableMethods.getFaker().address().fullAddress())
                 .perform();
 
-        // a101Page.adresOlusturAdresBox.sendKeys(faker.address().fullAddress());
-        // ReusableMethods.clickWithJS(a101Page.adresOlusturKaydetButonu);
+
+        // adress bilgileri kaydet
+        ReusableMethods.clickWithJS(a101Page.adresBilgileriniKaydet);
 
 
-        ReusableMethods.clickWithJS(a101Page.kargoKaydetVeDevamButonu);
-
+        //kargo secim
+        if (!a101Page.kargoSecimi.isSelected()) a101Page.kargoSecimi.click();
         ReusableMethods.waitFor(2);
+
+
+        //kaydet ve devam et
+        ReusableMethods.clickWithJS(a101Page.kaydetveDevamEt);
+        ReusableMethods.waitFor(2);
+
+
         //JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         //try {
         //    ReusableMethods.clickWithJS(a101Page.kargoKaydetVeDevamButonu);
@@ -157,13 +167,6 @@ public class A101Case extends TestBaseRapor {
         //    jse.executeScript("arguments[0].click()", a101Page.kargoKaydetVeDevamButonu);
         //}
 
-        ReusableMethods.waitFor(2);
-
-        //************************************************************************************************************
-        //kargo secim
-        if (!a101Page.kargo.isSelected()) a101Page.kargo.click();
-
-        ReusableMethods.waitFor(2);
 
         /*
          * Buradan aşağıdaki kısımda ise ödeme ekranı bilgilerinin doğruluğu kısmında yanlış bilgi sonucu çıkan mesaj işlemi yapıldı.
@@ -191,8 +194,6 @@ public class A101Case extends TestBaseRapor {
          //Kart bilgilerini doğru giriniz yazısının geldiğini doğrulayınız
          Assert.assertTrue(driver.findElement(By.xpath("//div[text()='Kart bilgilerinizi kontrol ediniz.']")).isDisplayed());
          */
-
-        //ReusableMethods.clickWithJS(a101Page.kargoKaydetVeDevamButonu);
         //10-Siparişi tamamla butonuna tıklayarak, ödeme ekranına gidildiğini ,doğru ekrana yönlendiklerini kontrol edecekler.
     }
 }
