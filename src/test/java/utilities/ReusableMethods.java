@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,23 +81,40 @@ public class ReusableMethods {
         return element;
     }
 
+    public static void jsclick(WebElement webElement) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        try {
+            webElement.click();
+        } catch (Exception e) {
+            js.executeScript("arguments[0].scrollIntoView(true);", webElement);
+            js.executeScript("arguments[0].click()", webElement);
+        }
+    }
 
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click()", element);
     }
 
-    static Faker faker;
 
+    static SoftAssert softAssert;
+    public static SoftAssert getSoftAssert() { //getSoftAssert method
+
+        return softAssert = new SoftAssert();
+    }
+
+
+    static Faker faker;
     public static Faker getFaker() {
 
         return faker = new Faker();
     }
 
+
     static WebDriverWait wait;
     public static WebDriverWait driverWait(WebDriver driver, Duration duration) {
 
-       return wait = new WebDriverWait(driver,duration);
+        return wait = new WebDriverWait(driver, duration);
     }
 
 }

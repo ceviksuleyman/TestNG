@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import pages.HmcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 import utilities.Rm;
 
 import java.time.Duration;
@@ -88,5 +89,9 @@ public class C03_E2ETest {
 
         //OK butonuna tıklayın.
         hmcPage.okButton.click();
+
+
+        ReusableMethods.waitFor(2);
+        Driver.closeDriver();
     }
 }

@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -19,7 +20,7 @@ import java.util.Random;
 public class A101Case extends TestBaseRapor {
 
     @Test
-    public void a101Case() throws IOException {
+    public void a101Case() throws IOException, InterruptedException {
 
 
         //1-A101 Anasayfasina gidilir
@@ -118,8 +119,7 @@ public class A101Case extends TestBaseRapor {
         // Mahalle Sec
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(a101Page.adresOlusturMahalleDropDown));
-        //ReusableMethods.driverWait(Driver.getDriver(),Duration.ofSeconds(15)).
-        //        until(ExpectedConditions.elementToBeClickable(a101Page.adresOlusturMahalleDropDown));
+
         select = new Select(a101Page.adresOlusturMahalleDropDown); //DropDown menuden random olarak
         List<WebElement> mahalleSayisi = select.getOptions();    //secilen ilceye bagli olarak mahalleleri liste attik
         random = new Random();
@@ -150,8 +150,14 @@ public class A101Case extends TestBaseRapor {
 
 
         //kargo secim
-        if (!a101Page.kargoSecimi.isSelected()) a101Page.kargoSecimi.click();
-        ReusableMethods.waitFor(2);
+        for (int retry = 0; retry < 5; retry++) {
+            try {
+                if (!a101Page.kargo.isSelected()) a101Page.kargo.click();
+                break;
+            } catch (StaleElementReferenceException ex) {
+                ex.toString();
+            }
+        }
 
 
         //kaydet ve devam et
@@ -159,41 +165,85 @@ public class A101Case extends TestBaseRapor {
         ReusableMethods.waitFor(2);
 
 
-        //JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-        //try {
-        //    ReusableMethods.clickWithJS(a101Page.kargoKaydetVeDevamButonu);
-        //} catch (Exception e) {
-        //    jse.executeScript("arguments[0].scrollIntoView(true);", a101Page.kargoKaydetVeDevamButonu);
-        //    jse.executeScript("arguments[0].click()", a101Page.kargoKaydetVeDevamButonu);
-        //}
-
-
-        /*
-         * Buradan aşağıdaki kısımda ise ödeme ekranı bilgilerinin doğruluğu kısmında yanlış bilgi sonucu çıkan mesaj işlemi yapıldı.
-         //Ödeme ekranındaki bölümleri geçersiz olarak giriş yapılıp hata mesajı aldığını kontrol ediniz
-         //Ad soyad
-         driver.findElement(By.xpath("(//input[@name='name'])[2]")).sendKeys("İpek Çiğdem Tan");
-         Thread.sleep(3000);
-         //Kart Numarasi
-         driver.findElement(By.xpath("(//input[@class='js-masterpassbin-payment-card'])[1]")).sendKeys("1234 5678 9123 4567");
-         Thread.sleep(3000);
-         //son kullanma tarihi
-         driver.findElement(By.xpath("(//select[@name='card_month'])[2]")).sendKeys("2",Keys.ENTER);
-         Thread.sleep(3000);
-         driver.findElement(By.xpath("(//select[@name='card_year'])[2]")).sendKeys("2026",Keys.ENTER);
-         Thread.sleep(3000);
-         //ccv
-         driver.findElement(By.xpath("(//input[@name='card_cvv'])[2]")).sendKeys("136",Keys.ENTER);
-         Thread.sleep(3000);
-         //Ön bilgileri kabul etme butonu
-         driver.findElement(By.xpath("(//label[@for='agrement2'])[1]")).click();
-         Thread.sleep(5000);
-         //siparişi tamamla
-         driver.findElement(By.xpath("(//span[text()='Siparişi Tamamla'])[2]")).click();
-         Thread.sleep(5000);
-         //Kart bilgilerini doğru giriniz yazısının geldiğini doğrulayınız
-         Assert.assertTrue(driver.findElement(By.xpath("//div[text()='Kart bilgilerinizi kontrol ediniz.']")).isDisplayed());
-         */
+        ReusableMethods.waitFor(3);
         //10-Siparişi tamamla butonuna tıklayarak, ödeme ekranına gidildiğini ,doğru ekrana yönlendiklerini kontrol edecekler.
+
+        int krediKartiHaneSayisi = 16;
+        //faker classini kullanarak kart bilgilerini doldurduk.
+        actions.click(a101Page.kartBilgileriAdSoyad)
+                .sendKeys(ReusableMethods.getFaker().name().fullName())
+                .sendKeys(Keys.TAB)
+                .sendKeys(ReusableMethods.getFaker().number().digits(krediKartiHaneSayisi)).perform();
+        extentTest.info("Ad Soyad ve Kart Numarasi bilgileri doldurulur");
+
+
+        select.selectByIndex(index);
+        select = new Select(a101Page.sonKullanmaTarihiAyDropDown);
+        List<WebElement> ayListesi = select.getOptions();
+        random = new Random();
+        index = random.nextInt(ayListesi.size());
+        while (index == 0) {
+            index = random.nextInt(ayListesi.size());
+        }
+
+
+        extentTest.info("Random olarak bir ay girilir");
+        select.selectByIndex(index);
+        select = new Select(a101Page.sonKullanmaTarihiYilDropDown);
+        List<WebElement> yilListesi = select.getOptions();
+        random = new Random();
+        index = random.nextInt(yilListesi.size());
+        while (index == 0) {
+            index = random.nextInt(yilListesi.size());
+        }
+
+        extentTest.info("Random olarak bir yil girilir");
+
+
+        int cvv = 3;
+        a101Page.krediKartiCvv.sendKeys(ReusableMethods.getFaker().number().digits(cvv));
+        extentTest.info("Random olarak CVV girilir");
+
+        //Odeme ekranında olundugu kontrol edilir
+        String expectedText = "Kart ile ödeme";
+        String actualText = a101Page.kartIleOdemeText.getText();
+        Assert.assertEquals(actualText, expectedText);
+        extentTest.info("Odeme ekranında olundugu kontrol edilir");
+
+
+        // on bilgi
+        ReusableMethods.driverWait(Driver.getDriver(),Duration.ofSeconds(15)).
+                until(ExpectedConditions.elementToBeClickable(a101Page.onBilgileriKabul)).click();
+
+        //ReusableMethods.jsclick(a101Page.onBilgileriKabul);
+
+        ReusableMethods.waitFor(3);
+
+
+        extentTest.info("On bilgileri kabul secenegi tiklandi.");
+
+        try {
+            a101Page.mesafeliSatisSozlesmesi.click();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        extentTest.info("Cıkan mesafeli satis sözlesmesi kapatildi.");
+
+        a101Page.siparisiTamamlaButton.sendKeys(Keys.ENTER);
+
+        extentTest.info("Siparisi tamamla butonu tiklandi.");
+
+        ReusableMethods.getSoftAssert().assertTrue(a101Page.kartBilgileriniKontrolEdiniz.isDisplayed());
+
+        extentTest.info("Siparis bilgilerinin dogru olmadıgı kart bilgilerini kontrol ediniz yazisi uzerinden dogrulandi.");
+
+
+        ReusableMethods.waitFor(5);
+        Driver.closeDriver();
+
+        extentTest.info("Sayfa kapatildi.");
+
+        extentTest.pass("Test Başarılı.");
     }
 }
