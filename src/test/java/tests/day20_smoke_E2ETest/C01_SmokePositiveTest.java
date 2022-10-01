@@ -1,4 +1,4 @@
-package tests.day19_PositiveNegativeTest;
+package tests.day20_smoke_E2ETest;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -8,9 +8,9 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.Rm;
 
-public class C02_PositiveTest {
+public class C01_SmokePositiveTest {
 
-     /*
+    /*
      https://www.hotelmycamp.com adresine git
      login butonuna bas
      test data username: manager ,
@@ -19,17 +19,16 @@ public class C02_PositiveTest {
      */
 
     @Test
-    public void positiveTest() {
+    public void validUsernamePassword() {
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
 
+        HmcPage hmcPage = new HmcPage();
 
-        HmcPage hotelMyCampPage = new HmcPage();
-
-        hotelMyCampPage.loginButton.click();
+        hmcPage.loginButton.click();
 
         Rm.getActions()
-                .click(hotelMyCampPage.username)
+                .click(hmcPage.username)
                 .sendKeys(ConfigReader.getProperty("hmcUsname"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(ConfigReader.getProperty("hmcpassw"))
@@ -38,10 +37,9 @@ public class C02_PositiveTest {
                 .perform();
 
 
-        Assert.assertTrue(hotelMyCampPage.girisBasarili.isDisplayed());
+        // Degerleri girildiginde sayfaya basarili sekilde girilebildigini test et
+        Assert.assertTrue(hmcPage.girisBasarili.isDisplayed());
 
-        //hotelMyCampPages.username.sendKeys(ConfigReader.getProperty("usernameHotel"));
-        //hotelMyCampPages.password.sendKeys(ConfigReader.getProperty("passwordHotel"));
-        //hotelMyCampPages.submit.click();
+        Driver.closeDriver();
     }
 }

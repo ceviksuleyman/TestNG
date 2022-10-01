@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="istenen test methodu calistir">
+    <test name="methods">
+        <classes>
+            <class name="tests.day16_notation.C03_Priority">
+                <methods>
+                    <include name="bestBuyTest"/> <!-- sadece class'daki  bestBuyTest method'unu calistir -->
+                </methods>
+            </class>
+
+            <class name="tests.day16_notation.C02_BeforeClassAfterClass">
+                <methods>
+                    <exclude
+                            name="testAmazon"/>  <!--testAmazon method'u haric class'daki diger method'lari calistir -->
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

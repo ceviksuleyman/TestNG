@@ -95,5 +95,4 @@ public class A101Page {
     @FindBy(xpath = "(//div[@data-type='masterpass'])[1]")
     public WebElement kartIleOdemeText;
 
-
 }

@@ -2,7 +2,7 @@ package tests.day19_PositiveNegativeTest;
 
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
-import pages.HotelMyCampPage;
+import pages.HmcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.Rm;
@@ -19,16 +19,16 @@ public class C03_NegativeTest {
     @Test
     public void negativeTest() {
 
-        HotelMyCampPage hotelMyCampPage = new HotelMyCampPage();
+        HmcPage hotelMyCampPage = new HmcPage();
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
 
         Rm.getActions().
                 click(hotelMyCampPage.loginButton).perform();
         Rm.getActions().click(hotelMyCampPage.username).
-                sendKeys(ConfigReader.getProperty("userWrongHotel")).
+                sendKeys(ConfigReader.getProperty("hmcInvalidUs")).
                 sendKeys(Keys.TAB).
-                sendKeys(ConfigReader.getProperty("passwordHotel")).
+                sendKeys(ConfigReader.getProperty("hmcInvalidPass")).
                 sendKeys(Keys.TAB).
                 sendKeys(Keys.ENTER).
                 perform();

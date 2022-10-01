@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="istenen package calistir">
+
+    <test name="package">
+        <packages>
+            <package name="tests.day18_ConfigReaderProperties">
+            </package>
+        </packages>
+    </test>
+
+    <test name="packageBaskaTest">
+        <classes>
+            <class name="tests.aPractice.practice06.P01"/>
+        </classes>
+    </test>
+</suite>
