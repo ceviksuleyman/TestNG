@@ -23,6 +23,7 @@ public class Task01 extends TBBeforeClassAfterClass {
     public void testAmazon() {
 
         driver.get("https://www.amazon.com/");
+        driver.navigate().refresh();
     }
 
     @Test(priority = 1)
@@ -49,4 +50,5 @@ public class Task01 extends TBBeforeClassAfterClass {
         String price = driver.findElement(By.cssSelector("#a-page")).getText();
         Assert.assertNotEquals(price, "$16.83");
     }
+
 }

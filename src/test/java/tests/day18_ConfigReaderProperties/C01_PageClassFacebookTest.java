@@ -1,9 +1,10 @@
-package tests.day18;
+package tests.day18_ConfigReaderProperties;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.FacebookPage;
 import utilities.Driver;
+import utilities.Rm;
 
 public class C01_PageClassFacebookTest {
 
@@ -18,8 +19,8 @@ public class C01_PageClassFacebookTest {
 
         //Faker class’ini kullanarak email ve sifre degerlerini yazdirip, giris butonuna basin
         FacebookPage facebookPage = new FacebookPage();
-        facebookPage.email.sendKeys(Driver.getFaker().internet().emailAddress());
-        facebookPage.password.sendKeys(Driver.getFaker().internet().password());
+        facebookPage.email.sendKeys(Rm.getFaker().internet().emailAddress());
+        facebookPage.password.sendKeys(Rm.getFaker().internet().password());
         facebookPage.signInButton.click();
 
 
@@ -32,6 +33,9 @@ public class C01_PageClassFacebookTest {
         } catch (Exception e) {
             System.out.println(facebookPage.evetBenimDevam.getText());
             facebookPage.evetBenimDevam.click();
+
         }
+
+        Driver.closeDriver();
     }
 }

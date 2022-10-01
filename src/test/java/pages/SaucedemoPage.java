@@ -15,12 +15,15 @@ public class SaucedemoPage {
     //username
     @FindBy(xpath = "//*[@id='user-name']")
     public WebElement username;
+
     //password
     @FindBy(xpath = "//*[@id='password']")
     public WebElement password;
+
     //login button
     @FindBy(xpath = "//*[@id='login-button']")
     public WebElement loginButton;
+
     //dropDown kısmı
     @FindBy(xpath = "//*[@class='product_sort_container']")
     public WebElement dropDown;

@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.SaucedemoPage;
 import utilities.Driver;
+import utilities.Rm;
 
 import java.util.*;
 
@@ -42,13 +43,13 @@ public class P02 {
         System.out.println("List Unique Degil -> " + priceList);
 
 
-        Driver.select(ddm).selectByVisibleText("Price (low to high)");
-        Assert.assertTrue(Driver.select(ddm).getFirstSelectedOption().isDisplayed());
+        Rm.select(ddm).selectByVisibleText("Price (low to high)");
+        Assert.assertTrue(Rm.select(ddm).getFirstSelectedOption().isDisplayed());
 
 
-        System.out.println(Driver.select(ddm).getFirstSelectedOption().getText()); //Price (low to high)
+        System.out.println(Rm.select(ddm).getFirstSelectedOption().getText()); //Price (low to high)
 
 
-        Assert.assertEquals(Driver.select(ddm).getFirstSelectedOption().getText(), "Price (low to high)");
+        Assert.assertEquals(Rm.select(ddm).getFirstSelectedOption().getText(), "Price (low to high)");
     }
 }

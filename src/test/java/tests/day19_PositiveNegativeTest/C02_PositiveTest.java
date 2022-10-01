@@ -1,4 +1,4 @@
-package tests.day18;
+package tests.day19_PositiveNegativeTest;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -6,8 +6,9 @@ import org.testng.annotations.Test;
 import pages.HotelMyCampPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.Rm;
 
-public class C03_PositiveTest {
+public class C02_PositiveTest {
 
      /*
      https://www.hotelmycamp.com adresine git
@@ -27,7 +28,7 @@ public class C03_PositiveTest {
 
         hotelMyCampPage.loginButton.click();
 
-        Driver.getActions()
+        Rm.getActions()
                 .click(hotelMyCampPage.username)
                 .sendKeys(ConfigReader.getProperty("userHotel"))
                 .sendKeys(Keys.TAB)

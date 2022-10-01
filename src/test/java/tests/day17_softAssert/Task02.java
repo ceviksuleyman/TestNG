@@ -56,7 +56,7 @@ public class Task02 extends TBBeforeClassAfterClass {
         driver.findElement(By.cssSelector(".btn.btn-primary")).click();
 
 
-        //
+        //sayfa hatasindan dolayi yeniden sayfaya git.
         driver.navigate().to("http://zero.webappsecurity.com/");
 
 

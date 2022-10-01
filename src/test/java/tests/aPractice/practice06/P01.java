@@ -4,6 +4,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import pages.DhtmlgoodiesPage;
 import utilities.Driver;
+import utilities.Rm;
 
 public class P01 {
 
@@ -17,7 +18,7 @@ public class P01 {
         DhtmlgoodiesPage dhtmlgoodiesPage = new DhtmlgoodiesPage();
 
 
-        Driver.getActions().dragAndDrop(dhtmlgoodiesPage.oslo, dhtmlgoodiesPage.norway).
+        Rm.getActions().dragAndDrop(dhtmlgoodiesPage.oslo, dhtmlgoodiesPage.norway).
                 dragAndDrop(dhtmlgoodiesPage.stockholm, dhtmlgoodiesPage.swedan).
                 dragAndDrop(dhtmlgoodiesPage.washington, dhtmlgoodiesPage.unitedStates).
                 dragAndDrop(dhtmlgoodiesPage.copenhagen, dhtmlgoodiesPage.denmark).
