@@ -43,9 +43,8 @@ public class C03_HmcE2ETest {
         wait.until(ExpectedConditions.elementToBeClickable(hmcPage.hotelManagement)).click();
         hmcPage.roomReservation.click();
 
-        //Açılan sayfadaki tüm metin kutularına istediğiniz verileri girin.
-        //Rm.select(hmcPage.hotelRoom).selectByIndex(3);
 
+        //Açılan sayfadaki tüm metin kutularına istediğiniz verileri girin.
         hmcPage.addRoom.click();
 
         hmcPage.userId.sendKeys(ConfigReader.getProperty("hmcUsname"));
@@ -58,13 +57,13 @@ public class C03_HmcE2ETest {
                 .sendKeys(Keys.TAB).sendKeys("10/12/2022").sendKeys(Keys.ENTER)
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().number().digits(1))
+                .sendKeys(Rm.getFaker().number().digit())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().number().digits(1))
+                .sendKeys(Rm.getFaker().number().digit())
                 .sendKeys(Keys.TAB)
                 .sendKeys(Rm.getFaker().name().lastName())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().number().digits(11))
+                .sendKeys(Rm.getFaker().phoneNumber().cellPhone())
                 .sendKeys(Keys.TAB)
                 .sendKeys(Rm.getFaker().internet().emailAddress())
                 .sendKeys(Keys.TAB)
@@ -79,7 +78,7 @@ public class C03_HmcE2ETest {
 
         //Save butonuna tıklayın.
         jse.executeScript("arguments[0].scrollIntoView(true);", hmcPage.buttonSubmit);
-        jse.executeScript("arguments[0].click()", hmcPage.buttonSubmit);
+        jse.executeScript("arguments[0].click();", hmcPage.buttonSubmit);
 
 
         //“RoomReservation was inserted successfully” textinin göründüğünü test edin.

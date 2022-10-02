@@ -76,5 +76,9 @@ public class P01 extends TBBeforeClassAfterClass {
 
         //click submit button
         driver.findElement(By.cssSelector("#submit")).click();
+
+
+        Thread.sleep(2000);
+        driver.close();
     }
 }

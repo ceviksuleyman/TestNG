@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="smoke negatif test">
+    <test name="method">
+        <classes>
+            <class name="tests.day20_smoke_E2ETest.C02_SmokeNegativeTest">
+                <methods>
+                    <include name="invalidPassword"/>
+                    <include name="invalidUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

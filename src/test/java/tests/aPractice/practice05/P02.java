@@ -3,6 +3,7 @@ package tests.aPractice.practice05;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.Driver;
 import utilities.TBBeforeClassAfterClass;
 
 public class P02 extends TBBeforeClassAfterClass {
@@ -24,5 +25,7 @@ public class P02 extends TBBeforeClassAfterClass {
 
         // 5. Açılır pencereyi kabul edin
         driver.switchTo().alert().accept();
+
+        driver.close();
     }
 }

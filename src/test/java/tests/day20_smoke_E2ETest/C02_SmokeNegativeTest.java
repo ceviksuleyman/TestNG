@@ -10,11 +10,12 @@ import utilities.Rm;
 
 public class C02_SmokeNegativeTest {
 
+    HmcPage hmcPage;
     @Test
     public void invalidUser() {  //gecersiz kullanici ismi
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
-        HmcPage hmcPage = new HmcPage();
+        hmcPage = new HmcPage();
 
         hmcPage.loginButton.click();
 
@@ -36,7 +37,7 @@ public class C02_SmokeNegativeTest {
     public void invalidPassword() { //gecersiz parola
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
-        HmcPage hmcPage = new HmcPage();
+        hmcPage = new HmcPage();
 
         hmcPage.loginButton.click();
 
@@ -60,7 +61,7 @@ public class C02_SmokeNegativeTest {
     public void invalidUsPass() { //gecersiz parola ve kullanici ismi
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
-        HmcPage hmcPage = new HmcPage();
+        hmcPage = new HmcPage();
 
         hmcPage.loginButton.click();
 

@@ -3,7 +3,7 @@
 
     <test name="package">
         <packages>
-            <package name="tests.aPractice.practice06">
+            <package name="tests.day20_smoke_E2ETest">
             </package>
         </packages>
     </test>
@@ -11,6 +11,7 @@
     <test name="packageBaskaTest">
         <classes>
             <class name="tests.aPractice.practice05.P02"/>
+            <class name="tests.aPractice.practice06.P02"/>
         </classes>
     </test>
 </suite>

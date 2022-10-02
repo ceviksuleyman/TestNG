@@ -17,3 +17,15 @@
         </classes>
     </test>
 </suite>
+
+        <!--
+        Bir class'daki tum method'lar calisacaksa bunun icin direkt class secmek yeterlidir.
+        Method secmemizin temel amaci class icerisinde sadece belirlenen method'larin calismasi
+        veya belirlenen methodlar disindaki method'larin calismasidir.
+
+        Eger calisacak spesifik method'lari belirtmek istersek include, calismayacak spesifik method'lari
+        belirtmek istersek exclude keyword'lari kullanilir.
+
+        Eger method'lar dependsOnMethods ile birbirine bagli ise xml dosyasi calisirken celiski olusmamasi
+        gereklidir celiski durumunda selenium testleri calistirmaz.!!!
+        -->

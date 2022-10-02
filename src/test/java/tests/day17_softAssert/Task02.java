@@ -65,7 +65,6 @@ public class Task02 extends TBBeforeClassAfterClass {
         driver.findElement(By.cssSelector("#pay_bills_link")).click();
 
 
-
         //“Purchase Foreign Currency” tusuna basin
         driver.findElement(By.cssSelector(".ui-tabs-nav.ui-helper-reset>:nth-child(3)")).click();
 
@@ -95,9 +94,23 @@ public class Task02 extends TBBeforeClassAfterClass {
         for (int i = 0; i < ddmList.size(); i++) {
 
             //if (ddmList.get(i).getText().equals(expectedDdm.get(i))) { }
-                softAssert.assertEquals(ddmList.get(i).getText(), expectedDdm.get(i), "Dropdown secenekleri beklenen liste ile esit degil");
+            softAssert.assertEquals(ddmList.get(i).getText(), expectedDdm.get(i), "Dropdown secenekleri beklenen liste ile esit degil");
         }
         softAssert.assertAll();
+
+
+        //List<String> ddmSite = new ArrayList<>();
+        //for (WebElement w : ddmList) {
+        //    ddmSite.add(w.getText());
+        //}
+        //Collections.sort(ddmSite);
+        //Collections.sort(expectedDdm);
+        //System.out.println("site ddm list***********");
+        //ddmSite.forEach(System.out::println);
+        //System.out.println("beklenen list********");
+        //expectedDdm.forEach(System.out::println);
+        //softAssert.assertEquals(expectedDdm, ddmSite, "siteden gelen ddm ile listemis esit degil");
+
     }
 
 

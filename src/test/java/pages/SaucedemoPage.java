@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class SaucedemoPage {
 
     public SaucedemoPage() {
@@ -34,4 +36,7 @@ public class SaucedemoPage {
     //.inventory_list>div>div.inventory_item_description>.pricebar>.inventory_item_price
     @FindBy(css = ".inventory_item_price")
     public WebElement prices;
+
+    @FindBy(css = ".inventory_item_price")
+    public List<WebElement> pricesList;
 }
