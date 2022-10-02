@@ -63,10 +63,14 @@ public class TCase01 {
 
         // Doldurma ayrıntıları: Unvan, Ad, E-posta, Şifre, Doğum tarihi
         //gender
-        for (int i = 0; i < exPage.gender.size(); i++) {
-            exPage.gender.get(i).click();
+        //for (int i = 0; i < exPage.gender.size(); i++) {
+        //    exPage.gender.get(i).click();
+        //}
+        for (WebElement gender : exPage.gender){
+            gender.click();
             Rm.waitFor(2);
         }
+
         //password
         exPage.passwordNewSignup.sendKeys(Rm.getFaker().internet().password());
 

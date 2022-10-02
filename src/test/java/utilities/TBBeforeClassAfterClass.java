@@ -53,6 +53,6 @@ public abstract class TBBeforeClassAfterClass {
     @AfterClass
     public void tearDown() {
 
-        driver.quit();
+        //driver.quit();
     }
 }

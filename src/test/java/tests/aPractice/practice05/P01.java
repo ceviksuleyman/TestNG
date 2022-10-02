@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import utilities.TBBeforeClassAfterClass;
 
 import java.time.Duration;
+import java.util.List;
 
 public class P01 extends TBBeforeClassAfterClass {
     @Test
@@ -34,12 +35,20 @@ public class P01 extends TBBeforeClassAfterClass {
 
 
         //check the gender
-        WebElement gender = driver.findElement(By.cssSelector("input[value=Male]"));
-        if (!gender.isSelected()) gender.click();
-
+        //WebElement gender = driver.findElement(By.cssSelector("input[value=Male]"));
+        List<WebElement> genders = driver.findElements(By.xpath("(//div[@dir='ltr']//h2//div//div//div[@class='control-group'])[4]//input"));
+        for (WebElement gender : genders) {
+            gender.click();
+            Thread.sleep(1000);
+        }
 
         //check the experience
-        driver.findElement(By.cssSelector("*[id=exp-3]")).click();
+        List<WebElement> experience = driver.findElements(By.xpath("(//div[@dir='ltr']//h2//div//div//div[@class='control-group'])[5]//input"));
+        for (WebElement w : experience) {
+            w.click();
+            Thread.sleep(1000);
+        }
+        //driver.findElement(By.cssSelector("*[id=exp-3]")).click();
 
 
         //fill the date
@@ -58,7 +67,7 @@ public class P01 extends TBBeforeClassAfterClass {
 
         //choose your continent -> Antartica
         WebElement continent = driver.findElement(By.cssSelector("#continents"));
-        select =new Select(continent);
+        select = new Select(continent);
         select.selectByIndex(6);
 
 
@@ -71,7 +80,7 @@ public class P01 extends TBBeforeClassAfterClass {
         //dosya yukle
         WebElement uploadFile = driver.findElement(By.cssSelector("#photo"));
         uploadFile.sendKeys(
-                "C:\\Users\\User\\IdeaProjects\\com.B81TestNG\\src\\test\\java\\tests\\aPractice\\Practice05\\dependsOnMethods.png");
+                "C:\\Users\\User\\IdeaProjects\\com.B81TestNG\\src\\resources\\notes\\dependsOnMethods.png");
 
 
         //click submit button
