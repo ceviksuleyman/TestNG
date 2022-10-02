@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="belirli gruplar">
+    <test name="belirli grublar">
+        <groups>
+            <run>
+                <exclude name="grup1"/> <!--aPractice package'indaki grup1 calisacak-->
+                <include name="grup2"/> <!-- sadece grup2 ler calissin grup1'ler calismasin -->
+            </run>
+        </groups>
+        <packages>
+            <package name="tests.aPractice.practice06"/>   <!--Calisacak gruplari nerede aramasi gerektigini yaz-->
+            <package name="tests.day20_smoke_E2ETest"/>   <!--Calisacak gruplari nerede aramasi gerektigini yaz-->
+        </packages>
+    </test>
+</suite>
+        <!--
+        xml dosyalar calistiracagimiz suite,
+        test veya diger secenekleri bir goreve gore grublandirma icin de kullanilabilir.
+
+        Bu durumda calisacak tum test method'larini veya class'larini tek tek xml dosyasina tanimlamak yerine
+        framework'umuze istedigimiz test method'larini istedigimiz  gruplara dahil edebiliriz.
+        -->

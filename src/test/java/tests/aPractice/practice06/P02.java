@@ -10,7 +10,7 @@ import utilities.Rm;
 import java.util.*;
 
 public class P02 {
-    @Test
+    @Test(groups = {"grup1", "grup2"})
     public void test01() {
         //     * Navigate to  https://www.saucedemo.com/
         Driver.getDriver().get("https://www.saucedemo.com/");

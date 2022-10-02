@@ -7,18 +7,22 @@ Html kodlarindaki gibi tag'larin acilip kapanisina dikkat etmemiz gerekir.
 xml dosyamizi olustururken ilk once <!DOCTYPE komutu ile baslamamiz gerekiyor. Bunu testNG sayfasindan
 da alabiliriz. Sonrasinda suite tag'i ile baslaip hangi test'i calistiracaksak ona gore .xml formatini
 yazmamiz gerekir.
+
+<suite tag'inin icine yazilacak 'verbose' atribute'u konsolda cikan mesajlarin daha cok veya daha az olmasini belirler.
+1 en az mesaj
+10 en fazla mesaj.
 -->
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="istenen class'lari calistir">
+<suite name="istenen class'lari calistir" verbose="1">
     <test name="class'lar">
         <classes>
             <class name="tests.day16_notation.Task01"/>
             <class name="tests.day17_softAssert.C03_SoftAssert"/>
         </classes>
     </test>
-    <test name="day20class">
+    <test name="a101class">
         <classes>
-            <class name="tests.day20_smoke_E2ETest.C03_HmcE2ETest"/>
+            <class name="tests.aPractice.A101Case"/>
         </classes>
     </test>
 </suite>

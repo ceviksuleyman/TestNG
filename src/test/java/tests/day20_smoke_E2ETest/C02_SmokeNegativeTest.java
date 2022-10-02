@@ -11,7 +11,7 @@ import utilities.Rm;
 public class C02_SmokeNegativeTest {
 
     HmcPage hmcPage;
-    @Test
+    @Test(groups = "grup1")
     public void invalidUser() {  //gecersiz kullanici ismi
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));

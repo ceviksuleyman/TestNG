@@ -1,6 +1,5 @@
 package tests.aPractice.practice06;
 
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import pages.DhtmlgoodiesPage;
 import utilities.Driver;
@@ -11,7 +10,7 @@ public class P01 {
     // Go to URL : http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html
     // Fill in capitals by country.
 
-    @Test
+    @Test(groups = "grup2")
     public void test01() throws InterruptedException {
         Driver.getDriver().get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
 
