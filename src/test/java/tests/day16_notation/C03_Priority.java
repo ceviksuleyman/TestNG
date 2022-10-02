@@ -11,21 +11,25 @@ public class C03_Priority extends TBBeforeMethodAfterMethod {
      */
     @Test(priority = 1)
     public void youtubeTest() {
+
         driver.get("https://www.youtube.com");
     }
 
     @Test(priority = 3)
     public void amazonTest() {
+
         driver.get("https://www.amazon.com");
     }
 
     @Test // Burayi 0(sifir) kabul eder, o yuzden ilk burasi calisir.
     public void bestBuyTest() {
+
         driver.get("https://www.bestbuy.com");
     }
 
     @Test(priority = -1)
     public void hepsiBuradaTest() {
+
         driver.get("https://www.hepsiburada.com");
     }
 }

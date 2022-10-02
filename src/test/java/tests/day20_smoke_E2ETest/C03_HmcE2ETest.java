@@ -14,7 +14,7 @@ import utilities.Rm;
 
 import java.time.Duration;
 
-public class C03_E2ETest {
+public class C03_HmcE2ETest {
 
     @Test
     public void e2eTest() throws InterruptedException {

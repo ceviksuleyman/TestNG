@@ -18,6 +18,7 @@ public class Task01 extends TBBeforeClassAfterClass {
 
     @Test(priority = 1)
     public void testYoutube() {
+
         driver.get("https://www.youtube.com");
     }
 

@@ -1,4 +1,4 @@
-package tests;
+package tests.aPractice;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -146,7 +146,7 @@ public class A101Case extends TestBaseRapor {
 
 
         // adress bilgileri kaydet
-        ReusableMethods.clickWithJS(a101Page.adresBilgileriniKaydet);
+        ReusableMethods.clickJse(a101Page.adresBilgileriniKaydet);
 
 
         //kargo secim
@@ -161,7 +161,7 @@ public class A101Case extends TestBaseRapor {
 
 
         //kaydet ve devam et
-        ReusableMethods.clickWithJS(a101Page.kaydetveDevamEt);
+        ReusableMethods.clickJse(a101Page.kaydetveDevamEt);
         ReusableMethods.waitFor(2);
 
 
@@ -212,20 +212,19 @@ public class A101Case extends TestBaseRapor {
 
 
         // on bilgi
-        ReusableMethods.driverWait(Driver.getDriver(),Duration.ofSeconds(15)).
+        ReusableMethods.driverWait(Driver.getDriver(), Duration.ofSeconds(15)).
                 until(ExpectedConditions.elementToBeClickable(a101Page.onBilgileriKabul)).click();
 
-        //ReusableMethods.jsclick(a101Page.onBilgileriKabul);
 
         ReusableMethods.waitFor(3);
-
-
         extentTest.info("On bilgileri kabul secenegi tiklandi.");
 
         try {
+
             a101Page.mesafeliSatisSozlesmesi.click();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+
+            ReusableMethods.jsclick(a101Page.mesafeliSatisSozlesmesi);
         }
 
         extentTest.info("Cıkan mesafeli satis sözlesmesi kapatildi.");

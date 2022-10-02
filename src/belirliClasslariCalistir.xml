@@ -18,7 +18,7 @@ yazmamiz gerekir.
     </test>
     <test name="day20class">
         <classes>
-            <class name="tests.day20_smoke_E2ETest.C03_E2ETest"/>
+            <class name="tests.day20_smoke_E2ETest.C03_HmcE2ETest"/>
         </classes>
     </test>
 </suite>

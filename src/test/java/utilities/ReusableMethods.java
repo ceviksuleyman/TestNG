@@ -2,7 +2,6 @@ package utilities;
 
 import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -75,6 +74,7 @@ public class ReusableMethods {
                 .pollingEvery(Duration.ofSeconds(1));//Check for the element every 1 second
         WebElement element = wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
+
                 return webElement;
             }
         });
@@ -91,7 +91,7 @@ public class ReusableMethods {
         }
     }
 
-    public static void clickWithJS(WebElement element) {
+    public static void clickJse(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click()", element);
     }
