@@ -10,7 +10,7 @@ import utilities.Rm;
 
 import java.util.List;
 
-public class TCase01 {
+public class TC01 {
      /*
       1. Tarayıcıyı başlatın
       2. 'http://automationexercise.com' url'sine gidin
@@ -81,6 +81,7 @@ public class TCase01 {
             index = Rm.random().nextInt(days.size());
         }
         Rm.select(exPage.day).selectByIndex(index);
+        System.out.println(Rm.select(exPage.day).getFirstSelectedOption().getText());
 
         //month
         List<WebElement> months = Rm.select(exPage.month).getOptions();
@@ -89,6 +90,7 @@ public class TCase01 {
             index = Rm.random().nextInt(months.size());
         }
         Rm.select(exPage.month).selectByIndex(index);
+        System.out.println(Rm.select(exPage.month).getFirstSelectedOption().getText());
 
         //year
         List<WebElement> years = Rm.select(exPage.year).getOptions();
@@ -97,6 +99,7 @@ public class TCase01 {
             index = Rm.random().nextInt(years.size());
         }
         Rm.select(exPage.year).selectByIndex(index);
+        System.out.println(Rm.select(exPage.year).getFirstSelectedOption().getText());
 
         //'Bültenimize kaydolun!' onay kutusunu seçin.
         //'Ortaklarımızdan özel teklifler alın!' onay kutusunu seçin.
@@ -117,6 +120,7 @@ public class TCase01 {
             index = Rm.random().nextInt(countries.size());
         }
         Rm.select(exPage.country).selectByIndex(index);
+        System.out.println(Rm.select(exPage.country).getFirstSelectedOption().getText());
 
         Rm.jsScroll(exPage.state);
         Rm.getActions()
