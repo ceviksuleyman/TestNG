@@ -1,4 +1,4 @@
-package pages.autoExercisePage.tc01_register;
+package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,9 +7,9 @@ import utilities.Driver;
 
 import java.util.List;
 
-public class ExercisePage {
+public class AutoExercisePage {
 
-    public ExercisePage() {
+    public AutoExercisePage() {
 
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -20,8 +20,19 @@ public class ExercisePage {
     @FindBy(css = ".nav.navbar-nav>:nth-child(4)")
     public WebElement loginAndSignIn;
 
+    @FindBy(css = ".login-form")
+    public WebElement loginPage;
+
+    @FindBy(css = "input[data-qa=login-email]")
+    public WebElement loginEmail;
+
+    @FindBy(css = "input[data-qa=login-password]")
+    public WebElement loginPassword;
+
+    @FindBy(css = "button[data-qa=login-button]")
+    public WebElement loginButton;
     @FindBy(css = ".signup-form")
-    public WebElement newUserSignup;
+    public WebElement newUserSignupPage;
 
     @FindBy(css = "*[data-qa=signup-name]")
     public WebElement newUserName;
@@ -76,5 +87,11 @@ public class ExercisePage {
 
     @FindBy(css = ".btn.btn-danger.button-form.js-tooltip")
     public WebElement deleted;
+
+    @FindBy(xpath = "//p[text()='Your email or password is incorrect!']")
+    public WebElement incorrectText;
+
+    @FindBy(css = " .nav.navbar-nav>:nth-child(4)")
+    public WebElement logOut;
 
 }

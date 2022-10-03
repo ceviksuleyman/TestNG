@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class A101Page {
 
     public A101Page(){
@@ -102,6 +104,9 @@ public class A101Page {
 
     @FindBy(xpath = "(//*[@class='js-checkout-cargo-item'])[1]")
     public WebElement kargo;
+
+    @FindBy(xpath = "//div[@class='cargo']//div//ul//li//label//div//div[@class='radio']")
+    public List<WebElement> cargo;
 
     @FindBy(xpath = "//label[@for='agrement2']")
     public  WebElement onBilgileriKabul;

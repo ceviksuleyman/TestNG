@@ -44,8 +44,8 @@ public class P01 extends TBBeforeClassAfterClass {
 
         //check the experience
         List<WebElement> experience = driver.findElements(By.xpath("(//div[@dir='ltr']//h2//div//div//div[@class='control-group'])[5]//input"));
-        for (WebElement w : experience) {
-            w.click();
+        for (WebElement experienc : experience) {
+            experienc.click();
             Thread.sleep(1000);
         }
         //driver.findElement(By.cssSelector("*[id=exp-3]")).click();

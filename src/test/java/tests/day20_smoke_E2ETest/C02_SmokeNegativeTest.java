@@ -21,7 +21,7 @@ public class C02_SmokeNegativeTest {
 
         Rm.getActions()
                 .click(hmcPage.username)
-                .sendKeys(ConfigReader.getProperty("hmcInvalidUs"))
+                .sendKeys(ConfigReader.getProperty("InvalidUsername"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(ConfigReader.getProperty("hmcpassw"))
                 .sendKeys(Keys.TAB)
@@ -45,7 +45,7 @@ public class C02_SmokeNegativeTest {
                 .click(hmcPage.username)
                 .sendKeys(ConfigReader.getProperty("hmcUsname"))
                 .sendKeys(Keys.TAB)
-                .sendKeys(ConfigReader.getProperty("hmcInvalidPass"))
+                .sendKeys(ConfigReader.getProperty("InvalidPassword"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.ENTER)
                 .perform();
@@ -67,9 +67,9 @@ public class C02_SmokeNegativeTest {
 
         Rm.getActions()
                 .click(hmcPage.username)
-                .sendKeys(ConfigReader.getProperty("hmcInvalidUs"))
+                .sendKeys(ConfigReader.getProperty("InvalidUsername"))
                 .sendKeys(Keys.TAB)
-                .sendKeys(ConfigReader.getProperty("hmcInvalidPass"))
+                .sendKeys(ConfigReader.getProperty("InvalidPassword"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.ENTER)
                 .perform();

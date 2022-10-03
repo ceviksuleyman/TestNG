@@ -26,9 +26,9 @@ public class C03_NegativeTest {
         Rm.getActions().
                 click(hotelMyCampPage.loginButton).perform();
         Rm.getActions().click(hotelMyCampPage.username).
-                sendKeys(ConfigReader.getProperty("hmcInvalidUs")).
+                sendKeys(ConfigReader.getProperty("InvalidUsername")).
                 sendKeys(Keys.TAB).
-                sendKeys(ConfigReader.getProperty("hmcInvalidPass")).
+                sendKeys(ConfigReader.getProperty("InvalidPassword")).
                 sendKeys(Keys.TAB).
                 sendKeys(Keys.ENTER).
                 perform();

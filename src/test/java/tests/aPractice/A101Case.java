@@ -1,5 +1,6 @@
 package tests.aPractice;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -117,18 +118,15 @@ public class A101Case extends TestBaseRapor {
 
 
         // Mahalle Sec
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.elementToBeClickable(a101Page.adresOlusturMahalleDropDown));
-
         select = new Select(a101Page.adresOlusturMahalleDropDown); //DropDown menuden random olarak
-        List<WebElement> mahalleSayisi = select.getOptions();    //secilen ilceye bagli olarak mahalleleri liste attik
+        List<WebElement> mahalleSayisi = select.getOptions(); //secilen ilceye bagli olarak mahalleleri liste attik
         random = new Random();
         index = random.nextInt(mahalleSayisi.size());
         while (index == 0) {
             index = random.nextInt(mahalleSayisi.size());
         }
         //Mahalle Drop Down'ında StaleElementReferenceException verdigi icin bu sekilde Handle edildi
-        for (int retry = 0; retry < 5; retry++) {
+        for (int retry = 0; retry < 10; retry++) {
             try {
                 select.selectByIndex(index);
                 break;
@@ -148,17 +146,20 @@ public class A101Case extends TestBaseRapor {
         // adress bilgileri kaydet
         ReusableMethods.clickJse(a101Page.adresBilgileriniKaydet);
 
-
         //kargo secim
-        for (int retry = 0; retry < 5; retry++) {
-            try {
-                if (!a101Page.kargo.isSelected()) a101Page.kargo.click();
-                break;
-            } catch (StaleElementReferenceException ex) {
-                ex.toString();
-            }
+        //for (int retry = 0; retry < 5; retry++) {
+        //    try {
+        //        if (!a101Page.kargo.isSelected()) a101Page.kargo.click();
+        //        break;
+        //    } catch (StaleElementReferenceException ex) {
+        //        ex.toString();
+        //    }
+        //}
+        for (int i = 0; i < a101Page.cargo.size(); i++) {
+            Rm.driverWait(Driver.getDriver(), Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(a101Page.cargo.get(i)));
+            a101Page.cargo.get(i).click();
+            Rm.waitFor(1);
         }
-
 
         //kaydet ve devam et
         ReusableMethods.clickJse(a101Page.kaydetveDevamEt);
@@ -238,6 +239,7 @@ public class A101Case extends TestBaseRapor {
         extentTest.info("Siparis bilgilerinin dogru olmadıgı kart bilgilerini kontrol ediniz yazisi uzerinden dogrulandi.");
 
 
+        ReusableMethods.getSoftAssert().assertAll();
         ReusableMethods.waitFor(5);
         Driver.closeDriver();
 

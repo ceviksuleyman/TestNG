@@ -89,7 +89,6 @@ public class C03_HmcE2ETest {
         //OK butonuna tıklayın.
         hmcPage.okButton.click();
 
-
         ReusableMethods.waitFor(2);
         Driver.closeDriver();
     }
