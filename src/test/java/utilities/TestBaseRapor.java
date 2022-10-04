@@ -16,15 +16,11 @@ public class TestBaseRapor {
 
 
     protected static ExtentReports extentReports; // extent report'a ilk atamayi yapar
-
     protected static ExtentTest extentTest; // test pass veya failed gibi bilgileri kaydeder
-
-
     protected static ExtentHtmlReporter extentHtmlReporter; // Html raporu duzenler
+
+
     // Test islemine baslamadan hemen once (test methodundan once degil, tum test isleminden once calisir
-
-
-
     @BeforeTest(alwaysRun = true) // alwaysRun : her zaman calistir
     public void setUpTest() {
 
@@ -32,7 +28,7 @@ public class TestBaseRapor {
         extentReports = new ExtentReports(); // Raporlamayi baslatir
 
         //rapor olustuktan sonra raporunuz nereye eklensin istiyorsaniz buraya yaziyorsunuz
-        String date = (new SimpleDateFormat("yyyyMMDDhhmmss")).format(new Date());
+        String date = (new SimpleDateFormat("yyyyMMddhhmmss")).format(new Date());
         String filePath = System.getProperty("user.dir") + "/target/Rapor/rapor_" + date + ".html";
 
 
@@ -43,12 +39,11 @@ public class TestBaseRapor {
         // istediginiz bilgileri buraya ekleyebiliyorsunuz
         extentReports.setSystemInfo("Enviroment", "Test");
         extentReports.setSystemInfo("Browser", ConfigReader.getProperty("browser"));
-        extentReports.setSystemInfo("Automation Engineer", "Feyza Ayhan");
+        extentReports.setSystemInfo("Automation Engineer", "Suleyman Cevik");
         extentHtmlReporter.config().setDocumentTitle("Rapor");
         extentHtmlReporter.config().setReportName("TestNG Reports");
-
-
     }
+
 
 
     // Her test methodundan sonra eger testte hata varsa, ekran goruntusu alip rapora ekliyor
