@@ -22,6 +22,7 @@ public class HepsiBuradaCase {
         // Elektronik altında bilgisayar/tablet altındaki tüm linkleri tıklayalım
         // Her linkten sonra o sayfaya gittimizi test edelim ve o sayfanız resmini alalım
         // Sayfayı kapatalım
+
         page = new HepsiBuradaPage();
 
         actions = new Actions(Driver.getDriver());
@@ -51,6 +52,7 @@ public class HepsiBuradaCase {
             ReusableMethods.waitFor(1);
         }
     }
+
 
     public void ilk2Tik() { //method
 

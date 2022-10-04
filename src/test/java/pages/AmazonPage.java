@@ -16,4 +16,7 @@ public class AmazonPage {
     public WebElement aramaKutusu;
     @FindBy(css = ".a-section.a-spacing-small.a-spacing-top-small")
     public WebElement aramaSonucu;
+
+    @FindBy(css = ".a-section.a-spacing-small.a-spacing-top-small")
+    public WebElement aramaSonucuWE;
 }

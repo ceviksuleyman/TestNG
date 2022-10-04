@@ -25,9 +25,12 @@ public class HepsiBuradaPage {
 
 
 
+
+
     // Bilgisayar/Tablet altindaki  Alt basliklarda dahil kucuk linklerle beraber
     @FindBy(xpath = "((//div//ul//li//div[@class='sf-MenuItems-LuiGWKGCzrRUM4_iLEgn'])[1]//div//ul//div)[1]//ul//li//a") // 80 h2 basliklar da dahil
     public List<WebElement> bilgisayarTableAlt;
+
 
     @FindBy(xpath = "((//div//ul//li//div[@class='sf-MenuItems-LuiGWKGCzrRUM4_iLEgn'])[1]//div//ul//div)[1]//ul//li//ul//a")
     public List<WebElement> tableBilgisyarAlt2;

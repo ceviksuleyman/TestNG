@@ -3,7 +3,9 @@ package utilities;
 import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
@@ -12,7 +14,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
 public class ReusableMethods {
@@ -117,4 +121,99 @@ public class ReusableMethods {
         return wait = new WebDriverWait(driver, duration);
     }
 
+
+    //***************
+    //========ScreenShot(Sayfanın resmini alma)=====//
+
+    //========ScreenShot Web Element(Bir webelementin resmini alma)=====//
+    public static String getScreenshotWebElement(String name, WebElement element) throws IOException {
+        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+
+        // TakesScreenshot, ekran görüntüsünü alan bir selenyum arayüzüdür.
+        File source = element.getScreenshotAs(OutputType.FILE);
+
+        // ekran görüntüsü konumunun tam yolu
+        String wElementSS = System.getProperty("user.dir") + "/target/WElementScreenshots/" + name + date + ".png";
+        File finalDestination = new File(wElementSS);
+
+        // ekran görüntüsünü verilen yola kaydedin
+        FileUtils.copyFile(source, finalDestination);
+        return wElementSS;
+    }
+
+    //========Switching Window(Pencereler arası geçiş)=====//
+    public static void switchToWindow(String targetTitle) {
+        String origin = Driver.getDriver().getWindowHandle();
+        for (String handle : Driver.getDriver().getWindowHandles()) {
+            Driver.getDriver().switchTo().window(handle);
+            if (Driver.getDriver().getTitle().equals(targetTitle)) {
+                return;
+            }
+        }
+        Driver.getDriver().switchTo().window(origin);
+    }
+
+    //========Hover Over(Elementin üzerinde beklemek)=====//
+    public static void hover(WebElement element) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).perform();
+    }
+
+    //==========Return a list of string given a list of Web Element====////
+    public static List<String> getElementsText(List<WebElement> list) {
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement el : list) {
+            if (!el.getText().isEmpty()) {
+                elemTexts.add(el.getText());
+            }
+        }
+        return elemTexts;
+    }
+
+    //========Returns the Text of the element given an element locator==//
+    public static List<String> getElementsText(By locator) {
+        List<WebElement> elems = Driver.getDriver().findElements(locator);
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement el : elems) {
+            if (!el.getText().isEmpty()) {
+                elemTexts.add(el.getText());
+            }
+        }
+        return elemTexts;
+    }
+
+
+    //===============Explicit Wait==============//
+    public static WebElement waitForVisibility(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static WebElement waitForVisibility(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public static WebElement waitForClickablility(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static WebElement waitForClickablility(By locator, int timeout) {  // method
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public static void clickWithTimeOut(WebElement element, int timeout) {  //method
+        for (int i = 0; i < timeout; i++) {
+            try {
+                element.click();
+                return;
+            } catch (WebDriverException e) {
+                waitFor(1);
+            }
+        }
+    }
 }
