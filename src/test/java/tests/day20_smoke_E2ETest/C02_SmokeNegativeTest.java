@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.HmcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 public class C02_SmokeNegativeTest {
 
@@ -19,7 +19,7 @@ public class C02_SmokeNegativeTest {
 
         hmcPage.loginButton.click();
 
-        Rm.getActions()
+        ReusableMethod.getActions()
                 .click(hmcPage.username)
                 .sendKeys(ConfigReader.getProperty("InvalidUsername"))
                 .sendKeys(Keys.TAB)
@@ -41,7 +41,7 @@ public class C02_SmokeNegativeTest {
 
         hmcPage.loginButton.click();
 
-        Rm.getActions()
+        ReusableMethod.getActions()
                 .click(hmcPage.username)
                 .sendKeys(ConfigReader.getProperty("hmcUsname"))
                 .sendKeys(Keys.TAB)
@@ -65,7 +65,7 @@ public class C02_SmokeNegativeTest {
 
         hmcPage.loginButton.click();
 
-        Rm.getActions()
+        ReusableMethod.getActions()
                 .click(hmcPage.username)
                 .sendKeys(ConfigReader.getProperty("InvalidUsername"))
                 .sendKeys(Keys.TAB)

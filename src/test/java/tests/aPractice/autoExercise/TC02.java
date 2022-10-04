@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pages.AutoExercisePage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 public class TC02 {
     /*
@@ -31,13 +31,13 @@ public class TC02 {
         Driver.getDriver().get(ConfigReader.getProperty("exerciseUrl"));
 
         //Ana sayfanın başarıyla görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.homePage.isDisplayed(),"Anasayfa goruntulenemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.homePage.isDisplayed(),"Anasayfa goruntulenemedi");
 
         //'Kayıt Ol / Giriş Yap' düğmesine tıklayın
         page.loginAndSignIn.click();
 
         //'Hesabınıza giriş yapın' ifadesinin görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.loginPage.isDisplayed(),"Login sayfasi goruntulenemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.loginPage.isDisplayed(),"Login sayfasi goruntulenemedi");
 
         //Doğru e-posta adresini ve şifreyi girin
         //'Giriş' düğmesini tıklayın
@@ -46,15 +46,15 @@ public class TC02 {
         page.loginButton.click();
 
         //'Kullanıcı adı olarak oturum açıldı' ifadesinin görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.loggedInAs.isDisplayed(),"Kullanici Adiyla giris yapilamadi");
+        ReusableMethod.getSoftAssert().assertTrue(page.loggedInAs.isDisplayed(),"Kullanici Adiyla giris yapilamadi");
 
         //'Hesabı Sil' düğmesini tıklayın
         page.deleteAccount.click();
 
         //'HESAP SİLİNDİ!' görünür ve 'Devam' düğmesini tıklayın
-        Rm.getSoftAssert().assertTrue(page.deleted.isDisplayed(),"Hesap Silinemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.deleted.isDisplayed(),"Hesap Silinemedi");
 
-        Rm.getSoftAssert().assertAll();
+        ReusableMethod.getSoftAssert().assertAll();
 
         Driver.closeDriver();
     }

@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 import java.time.Duration;
 import java.util.Random;
 
-public class Rm {
+public class ReusableMethod {
 
 
     static Faker faker;

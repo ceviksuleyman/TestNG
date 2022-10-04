@@ -10,7 +10,7 @@ import pages.HmcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 import java.time.Duration;
 
@@ -29,7 +29,7 @@ public class C03_HmcE2ETest {
 
         hmcPage.loginButton.click();
 
-        Rm.getActions()
+        ReusableMethod.getActions()
                 .click(hmcPage.username)
                 .sendKeys(ConfigReader.getProperty("hmcUsname"))
                 .sendKeys(Keys.TAB)
@@ -49,25 +49,25 @@ public class C03_HmcE2ETest {
 
         hmcPage.userId.sendKeys(ConfigReader.getProperty("hmcUsname"));
 
-        Rm.select(hmcPage.userIdHotelRoom).selectByIndex(9);
+        ReusableMethod.select(hmcPage.userIdHotelRoom).selectByIndex(9);
 
-        Rm.getActions().click(hmcPage.price).sendKeys("1200")
+        ReusableMethod.getActions().click(hmcPage.price).sendKeys("1200")
                 .sendKeys(Keys.TAB).sendKeys("10/02/2022").sendKeys(Keys.ENTER)
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB).sendKeys("10/12/2022").sendKeys(Keys.ENTER)
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().number().digit())
+                .sendKeys(ReusableMethod.getFaker().number().digit())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().number().digit())
+                .sendKeys(ReusableMethod.getFaker().number().digit())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().name().lastName())
+                .sendKeys(ReusableMethod.getFaker().name().lastName())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().phoneNumber().cellPhone())
+                .sendKeys(ReusableMethod.getFaker().phoneNumber().cellPhone())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().internet().emailAddress())
+                .sendKeys(ReusableMethod.getFaker().internet().emailAddress())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Rm.getFaker().random().toString()).perform();
+                .sendKeys(ReusableMethod.getFaker().random().toString()).perform();
 
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         jse.executeScript("arguments[0].scrollIntoView(true);", hmcPage.approved);

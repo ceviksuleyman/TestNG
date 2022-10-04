@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import pages.FacebookPage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
 
 public class C01_PageClassFacebookTest {
 

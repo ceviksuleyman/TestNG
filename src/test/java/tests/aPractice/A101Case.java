@@ -1,13 +1,11 @@
 package tests.aPractice;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.A101Page;
@@ -156,9 +154,9 @@ public class A101Case extends TestBaseRapor {
         //    }
         //}
         for (int i = 0; i < a101Page.cargo.size(); i++) {
-            Rm.driverWait(Driver.getDriver(), Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(a101Page.cargo.get(i)));
+            ReusableMethod.driverWait(Driver.getDriver(), Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(a101Page.cargo.get(i)));
             a101Page.cargo.get(i).click();
-            Rm.waitFor(1);
+            ReusableMethod.waitFor(1);
         }
 
         //kaydet ve devam et

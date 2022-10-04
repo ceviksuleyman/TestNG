@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.HmcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 public class C03_NegativeTest {
     /*
@@ -23,9 +23,9 @@ public class C03_NegativeTest {
 
         Driver.getDriver().get(ConfigReader.getProperty("hotelMyUrl"));
 
-        Rm.getActions().
+        ReusableMethod.getActions().
                 click(hotelMyCampPage.loginButton).perform();
-        Rm.getActions().click(hotelMyCampPage.username).
+        ReusableMethod.getActions().click(hotelMyCampPage.username).
                 sendKeys(ConfigReader.getProperty("InvalidUsername")).
                 sendKeys(Keys.TAB).
                 sendKeys(ConfigReader.getProperty("InvalidPassword")).
@@ -38,6 +38,6 @@ public class C03_NegativeTest {
         //hotelMyCampPages.password.sendKeys(ConfigReader.getProperty("passwordHotel"));
         //hotelMyCampPages.submit.click();
 
-        Rm.getSoftAssert().assertTrue(hotelMyCampPage.hataliGiris.isDisplayed());
+        ReusableMethod.getSoftAssert().assertTrue(hotelMyCampPage.hataliGiris.isDisplayed());
     }
 }

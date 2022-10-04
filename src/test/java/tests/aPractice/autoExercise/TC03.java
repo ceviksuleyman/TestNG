@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pages.AutoExercisePage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 public class TC03 {
     /*
@@ -29,13 +29,13 @@ public class TC03 {
         Driver.getDriver().get(ConfigReader.getProperty("exerciseUrl"));
 
         //Ana sayfanın başarıyla görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.homePage.isDisplayed(), "Anasayfa goruntulenemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.homePage.isDisplayed(), "Anasayfa goruntulenemedi");
 
         //'Kayıt Ol / Giriş Yap' düğmesine tıklayın
         page.loginAndSignIn.click();
 
         //'Hesabınıza giriş yapın' ifadesinin görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.loginPage.isDisplayed(), "Login sayfasi goruntulenemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.loginPage.isDisplayed(), "Login sayfasi goruntulenemedi");
 
         //Yanlış e-posta adresi ve şifre girin
         //'Giriş' düğmesini tıklayın
@@ -44,9 +44,9 @@ public class TC03 {
         page.loginButton.click();
 
         //'E-postanız veya şifreniz yanlış!' hatasını doğrulayın. görünür
-        Rm.getSoftAssert().assertTrue(page.incorrectText.isDisplayed(), "Gecersiz bilgilerle giris saglanamadi mesaji goruntulenmedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.incorrectText.isDisplayed(), "Gecersiz bilgilerle giris saglanamadi mesaji goruntulenmedi");
 
-        Rm.getSoftAssert().assertAll();
+        ReusableMethod.getSoftAssert().assertAll();
 
         Driver.closeDriver();
     }

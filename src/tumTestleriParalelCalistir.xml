@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Tum Testleri Calistir" verbose="2" parallel="classes" thread-count="2"> <!--tum testleri 2 browserda calistir-->
+    <test name="resgression">
+        <packages>
+            <package name="tests.*"/> <!--tum testler-->
+        </packages>
+    </test>
+</suite>
+        <!--
+        TestNG'de xml ile paralel test yapmak istersek suite tag'indan sonra parallel tag'i ile
+        kac bowserda calistirmak istersek thread-count tag'ini kullaniriz.
+        -->

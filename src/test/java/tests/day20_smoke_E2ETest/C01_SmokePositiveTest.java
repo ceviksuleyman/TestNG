@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.HmcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 public class C01_SmokePositiveTest {
 
@@ -27,7 +27,7 @@ public class C01_SmokePositiveTest {
 
         hmcPage.loginButton.click();
 
-        Rm.getActions()
+        ReusableMethod.getActions()
                 .click(hmcPage.username)
                 .sendKeys(ConfigReader.getProperty("hmcUsname"))
                 .sendKeys(Keys.TAB)

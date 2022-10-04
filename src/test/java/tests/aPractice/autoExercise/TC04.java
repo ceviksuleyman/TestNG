@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pages.AutoExercisePage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 public class TC04 {
     /*
@@ -31,13 +31,13 @@ public class TC04 {
         Driver.getDriver().get(ConfigReader.getProperty("exerciseUrl"));
 
         //Ana sayfanın başarıyla görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.homePage.isDisplayed(),"Anasayfa goruntulenemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.homePage.isDisplayed(),"Anasayfa goruntulenemedi");
 
         //'Kayıt Ol / Giriş Yap' düğmesine tıklayın
         page.loginAndSignIn.click();
 
         //'Hesabınıza giriş yapın' ifadesinin görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.loginPage.isDisplayed(),"Login sayfasi goruntulenemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.loginPage.isDisplayed(),"Login sayfasi goruntulenemedi");
 
         //Doğru e-posta adresini ve şifreyi girin
         //'Giriş' düğmesini tıklayın
@@ -46,16 +46,16 @@ public class TC04 {
         page.loginButton.click();
 
         //'Kullanıcı adı olarak oturum açıldı' ifadesinin görünür olduğunu doğrulayın
-        Rm.getSoftAssert().assertTrue(page.loggedInAs.isDisplayed(),"Kullanici Adiyla giris yapilamadi");
+        ReusableMethod.getSoftAssert().assertTrue(page.loggedInAs.isDisplayed(),"Kullanici Adiyla giris yapilamadi");
 
         //'Çıkış' düğmesini tıklayın
         page.logOut.click();
 
         //Kullanıcının giriş sayfasına yönlendirildiğini doğrulayın
-        Rm.getSoftAssert().assertTrue(page.loginPage.isDisplayed(),"Giris sayfasi goruntulenemedi");
+        ReusableMethod.getSoftAssert().assertTrue(page.loginPage.isDisplayed(),"Giris sayfasi goruntulenemedi");
 
 
-        Rm.getSoftAssert().assertAll();
+        ReusableMethod.getSoftAssert().assertAll();
         Driver.closeDriver();
     }
 }

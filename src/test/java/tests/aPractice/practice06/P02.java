@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.SaucedemoPage;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 import java.util.*;
 
@@ -45,12 +45,12 @@ public class P02 {
         System.out.println(priceList);
 
 
-        Rm.select(ddm).selectByVisibleText("Price (low to high)");
+        ReusableMethod.select(ddm).selectByVisibleText("Price (low to high)");
         Assert.assertTrue(saucedemoPage.dropDown.isDisplayed());
 
-        System.out.println(Rm.select(ddm).getFirstSelectedOption().getText()); //Price (low to high)
+        System.out.println(ReusableMethod.select(ddm).getFirstSelectedOption().getText()); //Price (low to high)
 
-        Assert.assertEquals(Rm.select(ddm).getFirstSelectedOption().getText(), "Price (low to high)");
+        Assert.assertEquals(ReusableMethod.select(ddm).getFirstSelectedOption().getText(), "Price (low to high)");
 
         Driver.closeDriver();
 

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.HmcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.Rm;
+import utilities.ReusableMethod;
 
 public class C02_PositiveTest {
 
@@ -28,7 +28,7 @@ public class C02_PositiveTest {
 
         hotelMyCampPage.loginButton.click();
 
-        Rm.getActions()
+        ReusableMethod.getActions()
                 .click(hotelMyCampPage.username)
                 .sendKeys(ConfigReader.getProperty("hmcUsname"))
                 .sendKeys(Keys.TAB)
