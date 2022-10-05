@@ -33,5 +33,4 @@ public class HepsiBuradaPage {
 
     @FindBy(xpath = "((//div//ul//li//div[@class='sf-MenuItems-LuiGWKGCzrRUM4_iLEgn'])[1]//div//ul//div)[1]//ul//li//ul//a")
     public List<WebElement> tableBilgisyarAlt2;
-
 }

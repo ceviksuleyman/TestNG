@@ -49,14 +49,18 @@ public class TestBaseRapor {
     // Her test methodundan sonra eger testte hata varsa, ekran goruntusu alip rapora ekliyor
     @AfterMethod(alwaysRun = true)
     public void tearDownMethod(ITestResult result) throws IOException {
+
         if (result.getStatus() == ITestResult.FAILURE) { // eger testin sonucu basarisizsa
             String screenshotLocation = ReusableMethods.getScreenshot(result.getName());
             extentTest.fail(result.getName());
             extentTest.addScreenCaptureFromPath(screenshotLocation);
             extentTest.fail(result.getThrowable());
+
         } else if (result.getStatus() == ITestResult.SKIP) { // eger test caliatirilmadan gecilme
+
             extentTest.skip("Test Case is skipped: " + result.getName()); // Ignore olanlar
         }
+
         Driver.closeDriver();
     }
 
