@@ -1,5 +1,6 @@
 package tests.aPractice.autoExercise;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import pages.HepsiBuradaPage;
@@ -37,19 +38,20 @@ public class HepsiBuradaCase {
 
             page.kucukAltBasliklar.get(i).click();
 
-            // actions.sendKeys(Keys.PAGE_DOWN).perform();   // sayfayi kaydir
+            actions.sendKeys(Keys.PAGE_DOWN).perform();   // sayfayi kaydir
+            actions.sendKeys(Keys.PAGE_DOWN).perform();
+            ReusableMethods.waitFor(1);
 
             ReusableMethods.getScreenshot("SS" + count);
-            ReusableMethods.waitFor(1);
             count++;
 
-
-            Driver.getDriver().navigate().back(); //sayfa geri
+            //Driver.getDriver().navigate().back(); //sayfa geri
             ReusableMethods.waitFor(2);
-
 
             ilkIkiTiklama(); // method
         }
+
+        Driver.closeDriver();
     }
 
 
@@ -62,4 +64,6 @@ public class HepsiBuradaCase {
         actions.moveToElement(page.bilgisayarTablet).perform();
         ReusableMethods.waitFor(1);
     }
+
+
 }
