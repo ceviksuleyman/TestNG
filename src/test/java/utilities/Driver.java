@@ -21,6 +21,7 @@ public class Driver {
 
     static WebDriver driver;
     public static WebDriver getDriver() {  // Webdriver getDriver method
+
         if (driver == null) {
 
             switch (ConfigReader.getProperty("browser")){
@@ -40,11 +41,13 @@ public class Driver {
                 //case "headless-chrome": //chrome acmadan test ! kullanilmaz
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
-                    break;
             }//switch
+
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
         }// if
+
         return driver;
     } //method son
 

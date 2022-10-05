@@ -21,8 +21,7 @@ public class HepsiBuradaPage {
     public WebElement bilgisayarTablet;
 
     @FindBy(xpath = "(//div[@class='sf-ChildMenuItems-OMxRJDk0466HYQpTli0P'])[1]//ul//li//ul//li//a//span") // 66 tane kucuk link
-    public List<WebElement> kucukAltBaslikar;
-
+    public List<WebElement> kucukAltBasliklar;
 
 
 

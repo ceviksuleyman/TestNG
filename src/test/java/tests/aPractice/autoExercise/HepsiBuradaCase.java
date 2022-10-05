@@ -29,13 +29,13 @@ public class HepsiBuradaCase {
 
         Driver.getDriver().get(ConfigReader.getProperty("hepsiburadaUrl"));
 
-        ilk2Tik();
+        ilkIkiTiklama(); // method
 
         int count = 1;
-        for (int i = 0; i < page.kucukAltBaslikar.size(); i++) {
+        for (int i = 0; i < page.kucukAltBasliklar.size(); i++) {
 
 
-            page.kucukAltBaslikar.get(i).click();
+            page.kucukAltBasliklar.get(i).click();
 
             // actions.sendKeys(Keys.PAGE_DOWN).perform();   // sayfayi kaydir
 
@@ -48,14 +48,14 @@ public class HepsiBuradaCase {
             ReusableMethods.waitFor(2);
 
 
-            ilk2Tik(); // method
-            ReusableMethods.waitFor(1);
+            ilkIkiTiklama(); // method
         }
     }
 
 
-    public void ilk2Tik() { //method
+    public void ilkIkiTiklama() { //method
 
+        //Elektronikten Bilgisayar/Tablet sec
         actions.moveToElement(page.elektronics).perform();
         ReusableMethods.waitFor(1);
 
