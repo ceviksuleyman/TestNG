@@ -32,5 +32,6 @@ public class C02_HardAssertCrossBrowser extends TestBaseCross {
 
         //6-arama sonucunun Nutella içerdigini test edin
         Assert.assertTrue(nutellaAramaSonucu.getText().contains("Nutella"));
+
     }
 }

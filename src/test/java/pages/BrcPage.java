@@ -17,6 +17,12 @@ public class BrcPage {
     @FindBy(css = "#formBasicEmail")
     public WebElement emailBox;
 
+    @FindBy(css = "#formBasicPassword")
+    public WebElement passwordBox;
+
+    @FindBy(css = "button[type=submit]")
+    public WebElement submitLogin;
+
     @FindBy(css = "#dropdown-basic-button")
     public WebElement loggedInAs;
 }

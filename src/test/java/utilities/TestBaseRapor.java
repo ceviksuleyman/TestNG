@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestBaseRapor {
+public abstract class TestBaseRapor {
 
 
     protected static ExtentReports extentReports; // extent report'a ilk atamayi yapar

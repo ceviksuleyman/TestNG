@@ -1,10 +1,7 @@
 package utilities;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -13,7 +10,7 @@ public class TestBaseCross {
     protected WebDriver driver;
 
     @Parameters("browser") //parameters ve optional beraber kullanilir.
-    @BeforeMethod
+    @BeforeClass // BeforeMethod da olur
     public void setUp(@Optional String browser) {
 
         driver = CrossDriver.getDriver(browser);
@@ -21,7 +18,7 @@ public class TestBaseCross {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
-    @AfterMethod
+    @AfterClass
     public void tearDown() {
 
         CrossDriver.closeDriver();

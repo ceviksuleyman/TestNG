@@ -14,10 +14,10 @@ public class HepsiBuradaCase {
 
     HepsiBuradaPage page;
 
-    Actions actions;
+    Actions actions = new Actions(Driver.getDriver());
 
     @Test
-    public void hepsiburda() throws IOException, IOException {
+    public void hepsiburda() throws IOException {
 
         // Hepsiburada sayfasına gidiniz
         // Elektronik altında bilgisayar/tablet altındaki tüm linkleri tıklayalım
@@ -26,7 +26,6 @@ public class HepsiBuradaCase {
 
         page = new HepsiBuradaPage();
 
-        actions = new Actions(Driver.getDriver());
 
         Driver.getDriver().get(ConfigReader.getProperty("hepsiburadaUrl"));
 
@@ -39,7 +38,6 @@ public class HepsiBuradaCase {
             page.kucukAltBasliklar.get(i).click();
 
             actions.sendKeys(Keys.PAGE_DOWN).perform();   // sayfayi kaydir
-            actions.sendKeys(Keys.PAGE_DOWN).perform();
             ReusableMethods.waitFor(1);
 
             ReusableMethods.getScreenshot("SS" + count);
@@ -64,6 +62,4 @@ public class HepsiBuradaCase {
         actions.moveToElement(page.bilgisayarTablet).perform();
         ReusableMethods.waitFor(1);
     }
-
-
 }

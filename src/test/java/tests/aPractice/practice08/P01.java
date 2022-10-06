@@ -14,7 +14,7 @@ public class P01 {
     //Click all the buttons and verify they are all clicked
 
     HerokuappPage page;
-    Actions actions;
+    Actions actions = new Actions(Driver.getDriver());
 
     @Test
     public void test01() {
@@ -22,7 +22,7 @@ public class P01 {
         Driver.getDriver().get("https://testpages.herokuapp.com/styled/events/javascript-events.html");
 
         page = new HerokuappPage();
-        actions = new Actions(Driver.getDriver());
+
         //Click all the buttons and verify they are all clicked
 
         page.onBlur.click();
