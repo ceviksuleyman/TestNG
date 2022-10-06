@@ -1,4 +1,4 @@
-package tests.day23;
+package tests.day23_dataProvider;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;

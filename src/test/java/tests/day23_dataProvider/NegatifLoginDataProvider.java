@@ -1,4 +1,4 @@
-package tests.day23;
+package tests.day23_dataProvider;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -6,9 +6,6 @@ import pages.BrcPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethod;
-
-import javax.swing.*;
-import java.util.Random;
 
 public class NegatifLoginDataProvider {
 
