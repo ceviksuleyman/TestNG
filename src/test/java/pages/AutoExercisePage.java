@@ -94,4 +94,22 @@ public class AutoExercisePage {
     @FindBy(css = " .nav.navbar-nav>:nth-child(4)")
     public WebElement logOut;
 
+    @FindBy(css = ".nav.navbar-nav>:nth-child(2)")
+    public WebElement productMenu;
+
+    @FindBy(css = ".features_items")
+    public WebElement allProductPage;
+
+    @FindBy(xpath = "//div[@class='productinfo text-center']/p")
+    public List<WebElement> allProductsList;
+
+    @FindBy(css = "input[id=search_product]")
+    public WebElement productSearchBox;
+
+    @FindBy(css = ".title.text-center")
+    public WebElement searchedProducts;
+
+    @FindBy(xpath = "//*[@class='productinfo text-center']/p")
+    public WebElement searchedProductNames;
+
 }
