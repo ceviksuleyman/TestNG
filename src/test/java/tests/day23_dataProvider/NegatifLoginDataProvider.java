@@ -15,11 +15,9 @@ public class NegatifLoginDataProvider {
     @DataProvider
     public static Object[][] KullaniciListe() {
 
-        Object[][] kullaniciBilgileri = {{"mahmut@gmail.com", "123454"},
+        return new Object[][]{{"mahmut@gmail.com", "123454"},
                 {"murtaza@hotmail.com", "454312"},
                 {"java@gmail.com", "5634631"}};
-
-        return kullaniciBilgileri;
     }
 
     @Test(dataProvider = "KullaniciListe")
