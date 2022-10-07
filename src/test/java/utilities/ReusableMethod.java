@@ -40,7 +40,7 @@ public class ReusableMethod {
         return select = new Select(ddm);
     }//
 
-    public static void jsclick(WebElement webElement) {
+    public static void jsScrollClick(WebElement webElement) {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         try {
             webElement.click();

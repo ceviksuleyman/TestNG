@@ -46,7 +46,7 @@ public class TC01 {
         ReusableMethod.getSoftAssert().assertTrue(page.homePage.isDisplayed(), "Anasayfa goruntulenemedi");
 
         //'Kayıt Ol / Giriş Yap' düğmesine tıklayın
-        ReusableMethod.jsclick(page.loginAndSignIn);
+        ReusableMethod.jsScrollClick(page.loginAndSignIn);
 
         //'Yeni Kullanıcı Kaydı'nı doğrulayın! görünür
         ReusableMethod.getSoftAssert().assertTrue(page.newUserSignupPage.isDisplayed(), "Yeni Kullanci Kaydi goruntulenemedi");
@@ -56,7 +56,7 @@ public class TC01 {
         page.newUserEmail.sendKeys(ReusableMethod.getFaker().internet().emailAddress());
 
         //'Kaydol' düğmesini tıklayın
-        page.SignupButton.click();
+        page.signUpButton.click();
 
         //'HESAP BİLGİLERİNİ GİRİN' ifadesinin görünür olduğunu doğrulayın
         ReusableMethod.getSoftAssert().assertTrue(page.accountInformation.isDisplayed(), "Hesap Bilgilerini Girin goruntulenemedi");
@@ -133,7 +133,7 @@ public class TC01 {
         ReusableMethod.getSoftAssert().assertTrue(page.accountCreated.isDisplayed(),"Hesap Olusturuldu goruntulenemedi");
 
         //'Devam' düğmesini tıklayın
-        page.countine.click();
+        page.countinue.click();
 
         //'Kullanıcı adı olarak oturum açıldı' ifadesinin görünür olduğunu doğrulayın
         ReusableMethod.getSoftAssert().assertTrue(page.loggedInAs.isDisplayed(),"Kullanici adi oturum acti ifadesi gorunmedi");

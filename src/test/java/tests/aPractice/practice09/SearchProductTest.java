@@ -31,7 +31,7 @@ public class SearchProductTest extends TestBaseRapor {
 
 
         // 4. 'Ürünler' butonuna tıklayın
-        page.productMenu.click();
+        page.productsButton.click();
         extentTest.info("Urunler butonuna tiklandi");
 
 
